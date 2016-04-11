@@ -6,3 +6,5 @@ Resources:
  * http://stackoverflow.com/questions/18963627/how-to-integrate-jax-rs-with-cdi-in-a-servlet-3-0-container
  * http://stackoverflow.com/questions/17224270/how-to-enable-cdi-inject-in-web-service-jaxrs-jersey-on-java-se-running-grizzl
  * http://stackoverflow.com/questions/16216759/dependency-injection-with-jersey-2-0
+ * http://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+ * http://www.mkyong.com/tutorials/jax-rs-tutorials/
