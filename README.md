@@ -9,7 +9,7 @@ Dice rolling with REST interface.
 Interface
 ---------
 
-1. Rolls one dice
+*Rolls one dice*
 
 ```
 /d{4,6,8,10,12,20}
@@ -24,10 +24,15 @@ Example:
 Will result in:
 
 ```
-pending
+{
+    "dice":"d20",
+    "modificator":0,
+    "result":7,
+    "partials":[7]
+}
 ```
 
-2. Rolls n dices
+*Rolls n dices*
 
 ```
 /n/d{4,6,8,10,12,20}
@@ -42,10 +47,15 @@ Example
 Will result in:
 
 ```
-pending
+{
+    "dice":"d20",
+    "modificator":0,
+    "result":29,
+    "partials":[10,19]
+}
 ```
 
-3. Rolls n dices and put a modificator
+*Rolls n dices and put a modificator*
 
 ```
 /n/d{4,6,8,10,12,20}/m
@@ -54,11 +64,16 @@ pending
 Example
 
 ```
-/2/d20/2
+/10/d20/5
 ```
 
 Will result in:
 
 ```
-pending
+{
+    "dice":"d20",
+    "modificator":5,
+    "result":107,
+    "partials":[8,1,12,16,9,5,17,17,9,8]
+}
 ```
