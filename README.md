@@ -48,7 +48,7 @@ pending
 3. Rolls n dices and put a modificator
 
 ```
-/n/d{4,6,8,10,12,20}/mod
+/n/d{4,6,8,10,12,20}/m
 ```
 
 Example
