@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Ddw.server.connector.port=$PORT -jar target/aleajactarest.jar server src/main/resources/aleajactarest.yml
