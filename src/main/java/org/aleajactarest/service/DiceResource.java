@@ -1,8 +1,8 @@
 package org.aleajactarest.service;
 
-import org.aleajactarest.engine.Dice;
 import org.aleajactarest.beans.DiceRollResult;
 import org.aleajactarest.beans.DiceRollResultAssembly;
+import org.aleajactarest.engine.Dice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

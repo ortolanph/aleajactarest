@@ -1,8 +1,8 @@
 package org.aleajactarest;
 
-import org.aleajactarest.service.DiceResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
+import org.aleajactarest.service.DiceResource;
 
 public class AleaJactaRestApplication extends Application<AleaJactaRestConfiguration> {
 

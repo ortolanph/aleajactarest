@@ -1,17 +1,17 @@
-package org.aleajactarest.parser.beans;
+package org.aleajactarest.parser;
 
 public class ParsedDice {
-    private int quantifier;
+    private int amount;
     private String dice;
     private String operation;
     private int modifier;
 
-    public int getQuantifier() {
-        return quantifier;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setQuantifier(int quantifier) {
-        this.quantifier = quantifier;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public String getDice() {

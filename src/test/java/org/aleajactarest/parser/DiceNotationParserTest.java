@@ -1,9 +1,6 @@
 package org.aleajactarest.parser;
 
-import org.aleajactarest.parser.beans.ParsedDice;
-import org.aleajactarest.parser.exceptions.NoDiceAtAllException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,19 +14,47 @@ public class DiceNotationParserTest {
         parser = new DiceNotationParser();
     }
 
-    @Test(expected = NoDiceAtAllException.class)
+    @Test(expected = DiceParseException.class)
     public void noDiceAtAll() throws Exception {
         parser.evaluate("roll!");
     }
 
     @Test
-    @Ignore
     public void parseDiceOnly() throws Exception {
         ParsedDice expected = createParsedDice(0, "d6", "", 0);
 
         ParsedDice actual = parser.evaluate("d6");
 
-        assertEquals(expected.getQuantifier(), actual.getQuantifier());
+        assertEquals(expected.getDice(), actual.getDice());
+    }
+
+    @Test
+    public void parseDiceWithAmout() throws Exception {
+        ParsedDice expected = createParsedDice(2, "d6", "", 0);
+
+        ParsedDice actual = parser.evaluate("2d6");
+
+        assertEquals(expected.getAmount(), actual.getAmount());
+    }
+
+    @Test
+    public void parseDiceWithModifier() throws Exception {
+        ParsedDice expected = createParsedDice(0, "d6", "*", 10);
+
+        ParsedDice actual = parser.evaluate("d6*10");
+
+
+        assertEquals(expected.getOperation(), actual.getOperation());
+        assertEquals(expected.getModifier(), actual.getModifier());
+    }
+
+    @Test
+    public void parseWithEverything() throws Exception {
+        ParsedDice expected = createParsedDice(2, "d6", "*", 10);
+
+        ParsedDice actual = parser.evaluate("2d6*10");
+
+        assertEquals(expected.getAmount(), actual.getAmount());
         assertEquals(expected.getDice(), actual.getDice());
         assertEquals(expected.getOperation(), actual.getOperation());
         assertEquals(expected.getModifier(), actual.getModifier());
@@ -39,7 +64,7 @@ public class DiceNotationParserTest {
     private ParsedDice createParsedDice(int quantifier, String dice, String operation, int modifier) {
         ParsedDice parsedDice = new ParsedDice();
 
-        parsedDice.setQuantifier(quantifier);
+        parsedDice.setAmount(quantifier);
         parsedDice.setDice(dice);
         parsedDice.setOperation(operation);
         parsedDice.setModifier(modifier);

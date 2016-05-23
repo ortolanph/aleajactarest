@@ -1,37 +1,70 @@
 package org.aleajactarest.parser;
 
-import org.aleajactarest.parser.beans.ParsedDice;
-import org.aleajactarest.parser.exceptions.DiceParseException;
-import org.aleajactarest.parser.exceptions.NoDiceAtAllException;
+import com.google.common.base.Strings;
+
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class DiceNotationParser {
 
     private static final String DICE_SYMBOL = "d";
-    private static final char[] OPERATORS = new char[]{'+', '-', '*', '÷'};
+    private static final List<String> OPERATORS = newArrayList("+", "-", "*", "÷");
+    private static final int DEFAULT_AMOUNT = 1;
+    private static final String DEFAULT_OPERATION = "+";
+    private static final int DEFAULT_MODIFIER = 0;
 
     public ParsedDice evaluate(String diceNotation) throws DiceParseException {
-        int quantifier=0;
-        String dice="";
-        String operation="";
-        int modifier=0;
+        int amount = DEFAULT_AMOUNT;
+        String dice = "";
+        String operation = DEFAULT_OPERATION;
+        int modifier = DEFAULT_MODIFIER;
 
-        if (isValidDice(diceNotation)) {
+        if (containsADice(diceNotation)) {
+            String[] elements = diceNotation.split(DICE_SYMBOL);
+            amount = getQuantifier(elements[0]);
 
+            if (containsOperator(elements[1])) {
+                operation = getOperation(elements[1]);
+                modifier = Integer.valueOf(elements[1].substring(elements[1].indexOf(operation) + 1));
+                elements[1] = elements[1].substring(0, elements[1].indexOf(operation));
+            }
+
+            dice = DICE_SYMBOL + elements[1];
         } else {
-            throw new NoDiceAtAllException(diceNotation);
+            throw new DiceParseException(diceNotation);
         }
 
         ParsedDice parsedDice = new ParsedDice();
 
-        parsedDice.setQuantifier(quantifier);
+        parsedDice.setAmount(amount);
         parsedDice.setDice(dice);
         parsedDice.setOperation(operation);
         parsedDice.setModifier(modifier);
 
-        return new ParsedDice();
+        return parsedDice;
     }
 
-    private boolean isValidDice(String diceNotation) {
+    private boolean containsADice(String diceNotation) {
         return diceNotation.contains(DICE_SYMBOL);
+    }
+
+    private int getQuantifier(String quantifier) {
+        return (!Strings.isNullOrEmpty(quantifier)) ? Integer.valueOf(quantifier) : DEFAULT_AMOUNT;
+    }
+
+    private boolean containsOperator(String diceNotation) {
+        return OPERATORS
+                .stream()
+                .anyMatch(op -> diceNotation.contains(op));
+
+    }
+
+    private String getOperation(String diceNotation) {
+        return OPERATORS
+                .stream()
+                .filter(op -> diceNotation.contains(op))
+                .findFirst()
+                .orElse(DEFAULT_OPERATION);
     }
 }

@@ -1,6 +1,5 @@
 package org.aleajactarest.beans;
 
-import com.google.common.base.Strings;
 import org.aleajactarest.engine.Dice;
 
 public class DiceRollResultAssembly {
@@ -24,7 +23,7 @@ public class DiceRollResultAssembly {
         myResult.setResult(result);
         myResult.setPartials(partials);
         myResult.setModifier(modifier);
-        myResult.setOperator((modifier == 0)?"none":"+");
+        myResult.setOperator((modifier == 0) ? "none" : "+");
 
         return myResult;
     }
