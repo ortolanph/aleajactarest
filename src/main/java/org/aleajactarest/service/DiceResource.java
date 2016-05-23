@@ -1,8 +1,8 @@
 package org.aleajactarest.service;
 
 import org.aleajactarest.engine.Dice;
-import org.aleajactarest.engine.DiceRollResult;
-import org.aleajactarest.engine.DiceRollResultAssembly;
+import org.aleajactarest.beans.DiceRollResult;
+import org.aleajactarest.beans.DiceRollResultAssembly;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,27 +57,39 @@ public class DiceResource {
     }
 
     @GET
-    @Path("{times}/{dice}/{modificator}")
+    @Path("{times}/{dice}/{modifier}")
     public DiceRollResult rollMultiple(
             @PathParam("times") int times,
             @PathParam("dice") String dice,
-            @PathParam("modificator") int modificator) {
+            @PathParam("modifier") int modifier) {
 
         LOGGER.info(
                 "Rolling {} {}s and modified by {}! There's a lot of shakes that I have to do.",
                 times,
                 dice,
-                modificator);
+                modifier);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
         int[] partials = myDice.multipleRoll(times);
 
-        int result = Arrays.stream(partials).sum() + modificator;
+        int result = Arrays.stream(partials).parallel().sum() + modifier;
 
         DiceRollResultAssembly assembly = new DiceRollResultAssembly();
 
-        return assembly.rollWithAdditional(myDice, result, modificator, partials);
+        return assembly.rollWithAdditional(myDice, result, modifier, partials);
+    }
+
+    @GET
+    @Path("/dice/{diceNotation}")
+    public DiceRollResult rollWithNotation(
+            @PathParam("diceNotation") String diceNotation) {
+
+        LOGGER.info(
+                "Interpreting {} and rolling.",
+                diceNotation);
+
+        return null;
     }
 
 }

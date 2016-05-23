@@ -33,6 +33,6 @@ public enum Dice implements DiceRoller {
     }
 
     public int[] multipleRoll(int times) {
-        return Arrays.stream(new int[times]).map(d -> roll()).toArray();
+        return Arrays.stream(new int[times]).parallel().map(d -> roll()).toArray();
     }
 }
