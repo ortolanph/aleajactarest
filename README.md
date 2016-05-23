@@ -12,68 +12,107 @@ Interface
 *Rolls one dice*
 
 ```
-/d{4,6,8,10,12,20}
+/roll/d{4,6,8,10,12,20}
 ```
 
 Example:
 
 ```
-/d20
+/roll/d20
 ```
 
 Will result in:
 
 ```
 {
-    "dice":"d20",
-    "modificator":0,
-    "result":7,
-    "partials":[7]
+    "dice": "d20",
+    "result": 4,
+    "operator": "+",
+    "modifier": 0,
+    "partials":
+        [
+            4
+        ]
 }
 ```
 
 *Rolls n dices*
 
 ```
-/n/d{4,6,8,10,12,20}
+/roll/n/d{4,6,8,10,12,20}
 ```
 
 Example
 
 ```
-/2/d20
+/roll/2/d20
 ```
 
 Will result in:
 
 ```
 {
-    "dice":"d20",
-    "modificator":0,
-    "result":29,
-    "partials":[10,19]
+    "dice": "d20",
+    "result": 14,
+    "operator": "+",
+    "modifier": 0,
+    "partials":
+        [
+            4,10
+        ]
 }
 ```
 
-*Rolls n dices and put a modificator*
+*Rolls n dices with a modifier*
 
 ```
-/n/d{4,6,8,10,12,20}/m
+/roll/n/d{4,6,8,10,12,20}/{+,-,*,÷}/m
 ```
 
 Example
 
 ```
-/10/d20/5
+/roll/10/d20/*/5
 ```
 
 Will result in:
 
 ```
 {
-    "dice":"d20",
-    "modificator":5,
-    "result":107,
-    "partials":[8,1,12,16,9,5,17,17,9,8]
+    "dice": "d20",
+    "result": 505,
+    "operator": "*",
+    "modifier": 5,
+    "partials":
+        [
+            10,15,11,16,18,6,3,2,9,11
+        ]
+}
+```
+
+*Rolls with Dice Notation
+
+```
+/roll/dice/{diceNotation}
+```
+
+Example
+
+```
+/roll/dice/10d20-5
+```
+
+Will result in:
+
+```
+{
+    "dice": "d20",
+    "result": 111,
+    "operator": "-",
+    "modifier": 5,
+    "partials":
+        [
+            3,11,2,5,20,15,15,6,19,20
+        ]
 }
 ```

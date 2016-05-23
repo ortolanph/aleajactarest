@@ -6,7 +6,7 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public class DiceNotationParser {
+public class DiceNotationParser extends Throwable {
 
     private static final String DICE_SYMBOL = "d";
     private static final List<String> OPERATORS = newArrayList("+", "-", "*", "÷");
@@ -39,7 +39,7 @@ public class DiceNotationParser {
 
         parsedDice.setAmount(amount);
         parsedDice.setDice(dice);
-        parsedDice.setOperation(operation);
+        parsedDice.setOperator(operation);
         parsedDice.setModifier(modifier);
 
         return parsedDice;

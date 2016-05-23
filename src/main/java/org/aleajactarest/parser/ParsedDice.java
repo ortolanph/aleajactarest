@@ -3,7 +3,7 @@ package org.aleajactarest.parser;
 public class ParsedDice {
     private int amount;
     private String dice;
-    private String operation;
+    private String operator;
     private int modifier;
 
     public int getAmount() {
@@ -22,12 +22,12 @@ public class ParsedDice {
         this.dice = dice;
     }
 
-    public String getOperation() {
-        return operation;
+    public String getOperator() {
+        return operator;
     }
 
-    public void setOperation(String operation) {
-        this.operation = operation;
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
     public int getModifier() {

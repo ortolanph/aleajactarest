@@ -32,7 +32,7 @@ public enum Dice implements DiceRoller {
         return random.nextInt(faces) + 1;
     }
 
-    public int[] multipleRoll(int times) {
-        return Arrays.stream(new int[times]).parallel().map(d -> roll()).toArray();
+    public int[] multipleRoll(int amount) {
+        return Arrays.stream(new int[amount]).parallel().map(d -> roll()).toArray();
     }
 }

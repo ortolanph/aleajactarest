@@ -4,6 +4,6 @@ public interface DiceRoller {
 
     int roll();
 
-    int[] multipleRoll(int times);
+    int[] multipleRoll(int amount);
 
 }

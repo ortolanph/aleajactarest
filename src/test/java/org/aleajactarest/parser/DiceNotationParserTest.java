@@ -44,7 +44,7 @@ public class DiceNotationParserTest {
         ParsedDice actual = parser.evaluate("d6*10");
 
 
-        assertEquals(expected.getOperation(), actual.getOperation());
+        assertEquals(expected.getOperator(), actual.getOperator());
         assertEquals(expected.getModifier(), actual.getModifier());
     }
 
@@ -56,7 +56,7 @@ public class DiceNotationParserTest {
 
         assertEquals(expected.getAmount(), actual.getAmount());
         assertEquals(expected.getDice(), actual.getDice());
-        assertEquals(expected.getOperation(), actual.getOperation());
+        assertEquals(expected.getOperator(), actual.getOperator());
         assertEquals(expected.getModifier(), actual.getModifier());
     }
 
@@ -66,7 +66,7 @@ public class DiceNotationParserTest {
 
         parsedDice.setAmount(quantifier);
         parsedDice.setDice(dice);
-        parsedDice.setOperation(operation);
+        parsedDice.setOperator(operation);
         parsedDice.setModifier(modifier);
 
         return parsedDice;

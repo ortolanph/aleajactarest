@@ -4,26 +4,29 @@ import org.aleajactarest.engine.Dice;
 
 public class DiceRollResultAssembly {
 
-    public DiceRollResult singleRoll(Dice dice, int result) {
-        return createAResult(dice, result, new int[]{result}, 0);
+    public static final String DEFAULT_OPERATOR = "+";
+    public static final int DEFAULT_MODIFIER = 0;
+
+    public DiceRollResult singleRollResult(Dice dice, int result) {
+        return createAResult(dice, result, DEFAULT_OPERATOR, DEFAULT_MODIFIER, new int[]{result});
     }
 
-    public DiceRollResult multipleRoll(Dice dice, int result, int[] partials) {
-        return createAResult(dice, result, partials, 0);
+    public DiceRollResult multipleRollResult(Dice dice, int result, int[] partials) {
+        return createAResult(dice, result, DEFAULT_OPERATOR, DEFAULT_MODIFIER, partials);
     }
 
-    public DiceRollResult rollWithAdditional(Dice dice, int result, int modifier, int[] partials) {
-        return createAResult(dice, result, partials, modifier);
+    public DiceRollResult modifierResult(Dice dice, int result, String operator, int modifier, int[] partials) {
+        return createAResult(dice, result, operator, modifier, partials);
     }
 
-    private DiceRollResult createAResult(Dice dice, int result, int[] partials, int modifier) {
+    private DiceRollResult createAResult(Dice dice, int result, String operator, int modifier, int[] partials) {
         DiceRollResult myResult = new DiceRollResult();
 
         myResult.setDice(dice.name().toLowerCase());
         myResult.setResult(result);
-        myResult.setPartials(partials);
+        myResult.setOperator(operator);
         myResult.setModifier(modifier);
-        myResult.setOperator((modifier == 0) ? "none" : "+");
+        myResult.setPartials(partials);
 
         return myResult;
     }
