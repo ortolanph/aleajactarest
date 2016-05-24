@@ -90,7 +90,7 @@ Will result in:
 }
 ```
 
-*Rolls with Dice Notation
+*Rolls with [Dice Notation](https://en.wikipedia.org/wiki/Dice_notation)*
 
 ```
 /roll/dice/{diceNotation}
