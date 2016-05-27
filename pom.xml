@@ -8,6 +8,7 @@
     <artifactId>aleajactarest</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <name>aleajactarest</name>
 
     <build>
         <finalName>${project.name}</finalName>
@@ -127,7 +128,6 @@
     </dependencies>
 
     <properties>
-        <project.name>aleajactarest</project.name>
         <dropwizard.version>0.9.2</dropwizard.version>
         <junit.version>4.12</junit.version>
         <guice.version>3.0</guice.version>

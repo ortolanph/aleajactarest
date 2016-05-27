@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PORT=9090
-JAVA_DEBUG_OPTS="-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=4000, suspend=n"
+JAVA_DEBUG_OPTS="-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n"
 JAVA_OPTS=""
 
 JAR_FILE="target/aleajactarest.jar"
