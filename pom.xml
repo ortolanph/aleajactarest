@@ -85,9 +85,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>${guice.version}</version>
+            <groupId>com.hubspot.dropwizard</groupId>
+            <artifactId>dropwizard-guice</artifactId>
+            <version>${guicebundle.version}</version>
         </dependency>
 
         <dependency>
@@ -130,9 +130,9 @@
     <properties>
         <dropwizard.version>0.9.2</dropwizard.version>
         <junit.version>4.12</junit.version>
-        <guice.version>3.0</guice.version>
         <mockito.version>1.9.5</mockito.version>
         <powermock.version>1.5</powermock.version>
+        <guicebundle.version>0.8.4.0</guicebundle.version>
     </properties>
 
 </project>

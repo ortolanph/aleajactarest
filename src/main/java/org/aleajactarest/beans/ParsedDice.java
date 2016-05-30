@@ -1,4 +1,4 @@
-package org.aleajactarest.parser;
+package org.aleajactarest.beans;
 
 public class ParsedDice {
     private int amount;

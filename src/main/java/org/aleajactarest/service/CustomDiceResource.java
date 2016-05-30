@@ -1,5 +1,9 @@
 package org.aleajactarest.service;
 
+import com.google.inject.Inject;
+import org.aleajactarest.assembly.CustomDiceRollResultAssembly;
+import org.aleajactarest.beans.CustomDiceRollResult;
+import org.aleajactarest.engine.Dice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,18 +21,23 @@ public class CustomDiceResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomDiceResource.class);
 
+    @Inject
+    private CustomDiceRollResultAssembly customAssembly;
+
     @GET
-    @Path("{diceTemplate}/{diceValues}")
-    public String roll(
-            @PathParam("diceTemplate") String diceTemplate,
-            @PathParam("diceValues") String diceValues) {
+    @Path("{template}/{values}")
+    public CustomDiceRollResult roll(
+            @PathParam("template") String template,
+            @PathParam("values") String values) {
 
-        LOGGER.info("Rolling a {}, with the following template: ", diceTemplate);
+        LOGGER.info("Rolling a {}, with the following template: ", template);
 
-        List<String> dice = Arrays.asList(diceValues.split(","));
+        List<String> faces = Arrays.asList(values.split(","));
 
-        dice.stream().forEach(d -> LOGGER.info("\t* {}", d));
+        faces.stream().forEach(d -> LOGGER.info("\t* {}", d));
 
-        return "Implementing";
+        int result = Dice.getDiceBySymbol(template).roll();
+
+        return customAssembly.getResult(template, faces.get(result - 1), faces);
     }
 }

@@ -1,12 +1,13 @@
 package org.aleajactarest.service;
 
+import com.google.inject.Inject;
+import org.aleajactarest.assembly.DiceRollResultAssembly;
 import org.aleajactarest.beans.DiceRollResult;
-import org.aleajactarest.beans.DiceRollResultAssembly;
+import org.aleajactarest.beans.ParsedDice;
 import org.aleajactarest.engine.Dice;
 import org.aleajactarest.operation.Operation;
 import org.aleajactarest.parser.DiceNotationParser;
-import org.aleajactarest.parser.DiceParseException;
-import org.aleajactarest.parser.ParsedDice;
+import org.aleajactarest.parser.exceptions.DiceParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,12 @@ public class DiceResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DiceResource.class);
 
+    @Inject
+    private DiceRollResultAssembly assembly;
+
+    @Inject
+    private DiceNotationParser parser;
+
     @GET
     @Path("{dice}")
     public DiceRollResult roll(
@@ -32,8 +39,6 @@ public class DiceResource {
                 dice);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
-
-        DiceRollResultAssembly assembly = new DiceRollResultAssembly();
 
         return assembly.singleRollResult(myDice, myDice.roll());
     }
@@ -54,8 +59,6 @@ public class DiceResource {
         int[] partials = myDice.multipleRoll(times);
 
         int result = Arrays.stream(partials).sum();
-
-        DiceRollResultAssembly assembly = new DiceRollResultAssembly();
 
         return assembly.multipleRollResult(myDice, result, partials);
     }
@@ -81,8 +84,6 @@ public class DiceResource {
 
         int result = Operation.getOperationBySymbol(operator).compute(Arrays.stream(partials).parallel().sum(), modifier);
 
-        DiceRollResultAssembly assembly = new DiceRollResultAssembly();
-
         return assembly.modifierResult(myDice, result, operator, modifier, partials);
     }
 
@@ -95,8 +96,6 @@ public class DiceResource {
                 "Interpreting {} and rolling.",
                 diceNotation);
 
-        DiceNotationParser parser = new DiceNotationParser();
-
         ParsedDice parsedDice = parser.evaluate(diceNotation);
 
         Dice myDice = Dice.getDiceBySymbol(parsedDice.getDice());
@@ -104,8 +103,6 @@ public class DiceResource {
         int[] partials = myDice.multipleRoll(parsedDice.getAmount());
 
         int result = Operation.getOperationBySymbol(parsedDice.getOperator()).compute(Arrays.stream(partials).parallel().sum(), parsedDice.getModifier());
-
-        DiceRollResultAssembly assembly = new DiceRollResultAssembly();
 
         return assembly.modifierResult(myDice, result, parsedDice.getOperator(), parsedDice.getModifier(), partials);
     }

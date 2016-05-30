@@ -1,5 +1,6 @@
-package org.aleajactarest.beans;
+package org.aleajactarest.assembly;
 
+import org.aleajactarest.beans.DiceRollResult;
 import org.aleajactarest.engine.Dice;
 
 public class DiceRollResultAssembly {

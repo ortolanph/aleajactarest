@@ -1,5 +1,7 @@
 package org.aleajactarest.parser;
 
+import org.aleajactarest.beans.ParsedDice;
+import org.aleajactarest.parser.exceptions.DiceParseException;
 import org.junit.Before;
 import org.junit.Test;
 

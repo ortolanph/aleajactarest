@@ -1,6 +1,8 @@
 package org.aleajactarest.parser;
 
 import com.google.common.base.Strings;
+import org.aleajactarest.beans.ParsedDice;
+import org.aleajactarest.parser.exceptions.DiceParseException;
 
 import java.util.List;
 

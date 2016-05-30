@@ -1,12 +1,13 @@
 package org.aleajactarest;
 
+import com.hubspot.dropwizard.guice.GuiceBundle;
 import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.aleajactarest.service.CustomDiceResource;
-import org.aleajactarest.service.DiceCupResource;
-import org.aleajactarest.service.DiceResource;
 
 public class AleaJactaRestApplication extends Application<AleaJactaRestConfiguration> {
+
+    private GuiceBundle<AleaJactaRestConfiguration> guiceBundle;
 
     public static void main(String[] args) {
         try {
@@ -16,13 +17,20 @@ public class AleaJactaRestApplication extends Application<AleaJactaRestConfigura
         }
     }
 
-    public void run(AleaJactaRestConfiguration dropBookWizardConfiguration, Environment environment) throws Exception {
-        DiceResource diceResource = new DiceResource();
-        DiceCupResource diceCupResource = new DiceCupResource();
-        CustomDiceResource customDiceResource = new CustomDiceResource();
+    @Override
+    public void initialize(Bootstrap<AleaJactaRestConfiguration> bootstrap) {
 
-        environment.jersey().register(diceResource);
-        environment.jersey().register(diceCupResource);
-        environment.jersey().register(customDiceResource);
+        guiceBundle = GuiceBundle
+                .<AleaJactaRestConfiguration>newBuilder()
+                .addModule(new AleaJactaRestModule())
+                .enableAutoConfig(getClass().getPackage().getName())
+                .setConfigClass(AleaJactaRestConfiguration.class)
+                .build();
+
+        bootstrap.addBundle(guiceBundle);
+    }
+
+    public void run(AleaJactaRestConfiguration dropBookWizardConfiguration, Environment environment) throws Exception {
+
     }
 }

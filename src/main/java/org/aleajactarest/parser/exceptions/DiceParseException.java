@@ -1,4 +1,4 @@
-package org.aleajactarest.parser;
+package org.aleajactarest.parser.exceptions;
 
 public class DiceParseException extends Exception {
 
