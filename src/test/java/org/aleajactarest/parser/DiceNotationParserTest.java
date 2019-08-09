@@ -12,7 +12,7 @@ public class DiceNotationParserTest {
     private DiceNotationParser parser;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         parser = new DiceNotationParser();
     }
 
