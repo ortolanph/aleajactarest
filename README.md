@@ -37,7 +37,7 @@ http://aleajactarest.herokuapp.com/api/dices/roll/d20
 
 Will result in:
 
-```(json5)
+```(json)
 {
     "dice": "d20",
     "result": 9,
