@@ -16,7 +16,7 @@ hs_err_pid*
 ### JetBrains template
 
 # User-specific stuff:
-.idea/**
+.idea/
 
 
 ### Maven template

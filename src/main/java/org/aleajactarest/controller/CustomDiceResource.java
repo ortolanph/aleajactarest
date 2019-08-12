@@ -1,34 +1,32 @@
-package org.aleajactarest.service;
+package org.aleajactarest.controller;
 
-import com.google.inject.Inject;
 import org.aleajactarest.assembly.CustomDiceRollResultAssembly;
 import org.aleajactarest.beans.CustomDiceRollResult;
 import org.aleajactarest.engine.Dice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
 import java.util.List;
 
-@Path("/custom")
-@Produces(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping(value = "/api/dices/custom")
 public class CustomDiceResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomDiceResource.class);
 
-    @Inject
+    @Autowired
     private CustomDiceRollResultAssembly customAssembly;
 
-    @GET
-    @Path("{template}/{values}")
+    @GetMapping("/{template}/{values}")
     public CustomDiceRollResult roll(
-            @PathParam("template") String template,
-            @PathParam("values") String values) {
+            @PathVariable("template") String template,
+            @PathVariable("values") String values) {
 
         LOGGER.info("Rolling a {}, with the following template: ", template);
 

@@ -2,7 +2,9 @@ package org.aleajactarest.assembly;
 
 import org.aleajactarest.beans.DiceRollResult;
 import org.aleajactarest.engine.Dice;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DiceRollResultAssembly {
 
     public static final String DEFAULT_OPERATOR = "+";

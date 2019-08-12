@@ -1,36 +1,20 @@
 package org.aleajactarest;
 
-import com.hubspot.dropwizard.guice.GuiceBundle;
-import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
-public class AleaJactaRestApplication extends Application<AleaJactaRestConfiguration> {
+import java.util.logging.Logger;
 
-    private GuiceBundle<AleaJactaRestConfiguration> guiceBundle;
+@SpringBootApplication
+@EnableAutoConfiguration
+public class AleaJactaRestApplication {
+
+    private static final Logger LOGGER = Logger.getLogger(AleaJactaRestApplication.class.getName());
 
     public static void main(String[] args) {
-        try {
-            new AleaJactaRestApplication().run(args);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void initialize(Bootstrap<AleaJactaRestConfiguration> bootstrap) {
-
-        guiceBundle = GuiceBundle
-                .<AleaJactaRestConfiguration>newBuilder()
-                .addModule(new AleaJactaRestModule())
-                .enableAutoConfig(getClass().getPackage().getName())
-                .setConfigClass(AleaJactaRestConfiguration.class)
-                .build();
-
-        bootstrap.addBundle(guiceBundle);
-    }
-
-    public void run(AleaJactaRestConfiguration dropBookWizardConfiguration, Environment environment) throws Exception {
-
+        LOGGER.fine("ALEA, JACTA, REST! is running!");
+        ApplicationContext ctx = SpringApplication.run(AleaJactaRestApplication.class, args);
     }
 }

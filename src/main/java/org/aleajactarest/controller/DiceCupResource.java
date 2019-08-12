@@ -1,6 +1,5 @@
-package org.aleajactarest.service;
+package org.aleajactarest.controller;
 
-import com.google.inject.Inject;
 import org.aleajactarest.assembly.DiceRollResultAssembly;
 import org.aleajactarest.beans.DiceCupRollResult;
 import org.aleajactarest.beans.DiceRollResult;
@@ -11,40 +10,38 @@ import org.aleajactarest.parser.DiceNotationParser;
 import org.aleajactarest.parser.exceptions.DiceParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-@Path("/cup")
-@Produces(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping(value = "/api/dices/cup")
 public class DiceCupResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(DiceCupResource.class);
 
-    @Inject
+    @Autowired
     private DiceNotationParser parser;
 
-    @Inject
+    @Autowired
     private DiceRollResultAssembly assembly;
 
-    @GET
-    @Path("{dicelist}")
-    public DiceCupRollResult roll(@PathParam("dicelist") String dicelist) {
+    @GetMapping("/{dicelist}")
+    public DiceCupRollResult roll(@PathVariable("dicelist") String dicelist) {
         List<String> dices = Arrays.asList(dicelist.split(","));
 
         LOGGER.info("Will roll: ");
 
         dices.stream().forEach(dice -> LOGGER.info("\t - {}", dice));
 
-        List<ParsedDice> parsedDices = newArrayList();
-        List<DiceRollResult> results = newArrayList();
+        List<ParsedDice> parsedDices = new ArrayList<>();
+        List<DiceRollResult> results = new ArrayList<>();
 
         dices.stream().forEach(dice -> {
             try {

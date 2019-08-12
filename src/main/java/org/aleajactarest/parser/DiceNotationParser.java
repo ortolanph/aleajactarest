@@ -1,23 +1,23 @@
 package org.aleajactarest.parser;
 
-import com.google.common.base.Strings;
 import org.aleajactarest.beans.ParsedDice;
 import org.aleajactarest.parser.exceptions.DiceParseException;
+import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
-import static com.google.common.collect.Lists.newArrayList;
-
+@Service
 public class DiceNotationParser extends Throwable {
 
     private static final String DICE_SYMBOL = "d";
-    private static final List<String> OPERATORS = newArrayList("+", "-", "*", "÷");
+    private static final List<String> OPERATORS = Arrays.asList("+", "-", "*", "÷");
     private static final int DEFAULT_AMOUNT = 1;
     private static final String DEFAULT_OPERATION = "+";
     private static final int DEFAULT_MODIFIER = 0;
 
     public ParsedDice evaluate(String diceNotation) throws DiceParseException {
-        int amount = DEFAULT_AMOUNT;
+        int amount = 1;
         String dice = "";
         String operation = DEFAULT_OPERATION;
         int modifier = DEFAULT_MODIFIER;
@@ -52,7 +52,7 @@ public class DiceNotationParser extends Throwable {
     }
 
     private int getQuantifier(String quantifier) {
-        return (!Strings.isNullOrEmpty(quantifier)) ? Integer.valueOf(quantifier) : DEFAULT_AMOUNT;
+        return !(quantifier == null) ? Integer.valueOf(quantifier) : DEFAULT_AMOUNT;
     }
 
     private boolean containsOperator(String diceNotation) {

@@ -1,6 +1,5 @@
-package org.aleajactarest.service;
+package org.aleajactarest.controller;
 
-import com.google.inject.Inject;
 import org.aleajactarest.assembly.DiceRollResultAssembly;
 import org.aleajactarest.beans.DiceRollResult;
 import org.aleajactarest.beans.ParsedDice;
@@ -10,30 +9,29 @@ import org.aleajactarest.parser.DiceNotationParser;
 import org.aleajactarest.parser.exceptions.DiceParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
 
-@Path("/roll")
-@Produces(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping(value = "/api/dices/roll")
 public class DiceResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DiceResource.class);
 
-    @Inject
+    @Autowired
     private DiceRollResultAssembly assembly;
 
-    @Inject
+    @Autowired
     private DiceNotationParser parser;
 
-    @GET
-    @Path("{dice}")
+    @GetMapping("/{dice}")
     public DiceRollResult roll(
-            @PathParam("dice") String dice) {
+            @PathVariable("dice") String dice) {
 
         LOGGER.info("Rolling a {}, shaking hand...",
                 dice);
@@ -43,11 +41,10 @@ public class DiceResource {
         return assembly.singleRollResult(myDice, myDice.roll());
     }
 
-    @GET
-    @Path("{times}/{dice}")
+    @GetMapping("/{times}/{dice}")
     public DiceRollResult rollMultiple(
-            @PathParam("times") int times,
-            @PathParam("dice") String dice) {
+            @PathVariable("times") int times,
+            @PathVariable("dice") String dice) {
 
         LOGGER.info(
                 "Rolling {} {}s! There's a lot of shakes that I have to do.",
@@ -63,13 +60,12 @@ public class DiceResource {
         return assembly.multipleRollResult(myDice, result, partials);
     }
 
-    @GET
-    @Path("{times}/{dice}/{operator}/{modifier}")
+    @GetMapping("/{times}/{dice}/{operator}/{modifier}")
     public DiceRollResult rollMultiple(
-            @PathParam("times") int times,
-            @PathParam("dice") String dice,
-            @PathParam("operator") String operator,
-            @PathParam("modifier") int modifier) {
+            @PathVariable("times") int times,
+            @PathVariable("dice") String dice,
+            @PathVariable("operator") String operator,
+            @PathVariable("modifier") int modifier) {
 
         LOGGER.info(
                 "Rolling {} {}s and modified by {}{}! There's a lot of shakes that I have to do.",
@@ -87,10 +83,9 @@ public class DiceResource {
         return assembly.modifierResult(myDice, result, operator, modifier, partials);
     }
 
-    @GET
-    @Path("/dice/{diceNotation}")
+    @GetMapping("/notation/{diceNotation}")
     public DiceRollResult rollWithNotation(
-            @PathParam("diceNotation") String diceNotation) throws DiceParseException {
+            @PathVariable("diceNotation") String diceNotation) throws DiceParseException {
 
         LOGGER.info(
                 "Interpreting {} and rolling.",
