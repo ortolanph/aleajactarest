@@ -1,96 +1,99 @@
-Alea, Jacta, REST!
-==================
+# Alea, Jacta, REST!
 
-About
------
+## About
 
 Dice rolling with REST interface.
 
-Interface
----------
+## Dices
 
-*Rolls one dice*
+These are the dices included in the project:
+
+* `d4` - a four sided dice, it's a pyramid with a triangular basis
+* `d6` - a four sided dice, it's a regular cube
+* `d8` - an eight sided dice, it's an octahedron
+* `d10` - a ten sided dice, it's a pentagonal trapezohedron
+* `d12` -  a twelve sided dice, it's a dodecahedron
+* `d20` - a twenty sided dice, it's the famous icosahedron
+
+## API
+
+### Simple Roll
+
+#### Rolls one dice
+
 
 ```
-/roll/d{4,6,8,10,12,20}
+http://aleajactarest.herokuapp.com/api/dices/roll/d{4,6,8,10,12,20}
 ```
+
+Where:
+ * `d{4,6,8,10,12,20}` is the dice to roll
 
 Example:
 
 ```
-/roll/d20
+http://aleajactarest.herokuapp.com/api/dices/roll/d20
 ```
 
 Will result in:
 
-```
+```(json5)
 {
     "dice": "d20",
-    "result": 4,
+    "result": 9,
     "operator": "+",
     "modifier": 0,
-    "partials":
-        [
-            4
-        ]
+    "partials": [
+        9
+    ]
 }
 ```
 
-*Rolls n dices*
+#### Rolls one dice 
 
 ```
-/roll/n/d{4,6,8,10,12,20}
+http://aleajactarest.herokuapp.com/api/dices/roll/{n}/d{4,6,8,10,12,20}
 ```
 
 Example
 
 ```
-/roll/2/d20
+http://aleajactarest.herokuapp.com/api/dices/roll/2/d20
 ```
 
 Will result in:
 
-```
+```(json5)
 {
     "dice": "d20",
-    "result": 14,
+    "result": 32,
     "operator": "+",
     "modifier": 0,
-    "partials":
-        [
-            4,10
-        ]
+    "partials": [
+        19,
+        13
+    ]
 }
 ```
 
-*Rolls n dices with a modifier*
+#### Rolls n dices with a modifier
 
 ```
-/roll/n/d{4,6,8,10,12,20}/{+,-,*,÷}/m
+http://aleajactarest.herokuapp.com/api/dices/roll/{n}/d{4,6,8,10,12,20}/{+,-,*,÷}/{m}
 ```
 
 Example
 
 ```
-/roll/10/d20/*/5
+http://aleajactarest.herokuapp.com/api/dices/roll/10/d20/*/5
 ```
 
 Will result in:
 
 ```
-{
-    "dice": "d20",
-    "result": 505,
-    "operator": "*",
-    "modifier": 5,
-    "partials":
-        [
-            10,15,11,16,18,6,3,2,9,11
-        ]
-}
 ```
 
-*Rolls with [Dice Notation](https://en.wikipedia.org/wiki/Dice_notation)*
+#### Rolls with [Dice Notation](https://en.wikipedia.org/wiki/Dice_notation)*
 
 ```
 /roll/dice/{diceNotation}
