@@ -4,6 +4,10 @@
 
 Dice rolling with REST interface.
 
+## Front-end
+
+**TBD**
+
 ## Dices
 
 These are the dices included in the project:
