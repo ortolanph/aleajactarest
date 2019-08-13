@@ -11,3 +11,5 @@ compile:
 
 run: compile
 	@[ -f /etc/hosts ] && java -Dserver.port=$(SPRING_APP_PORT) -jar $(APP_FILE) || echo "No good, man, no good!"
+
+

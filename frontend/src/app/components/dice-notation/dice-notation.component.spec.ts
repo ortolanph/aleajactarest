@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimpleComponent } from './simple.component';
+import { DiceNotationComponent } from './dice-notation.component';
 
-describe('SimpleComponent', () => {
-  let component: SimpleComponent;
-  let fixture: ComponentFixture<SimpleComponent>;
+describe('DiceNotationComponent', () => {
+  let component: DiceNotationComponent;
+  let fixture: ComponentFixture<DiceNotationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SimpleComponent ]
+      declarations: [ DiceNotationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimpleComponent);
+    fixture = TestBed.createComponent(DiceNotationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

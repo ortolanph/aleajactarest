@@ -1,0 +1,18 @@
+<h1>Simple Dice Rolling</h1>
+
+<h2>Rolling one dice</h2>
+
+<p>Choose a dice to perform a single roll</p>
+
+<button (click)="rollDice('d4')">d4</button>
+<button (click)="rollDice('d6')">d6</button>
+<button (click)="rollDice('d8')">d8</button>
+<button (click)="rollDice('d10')">d10</button>
+<button (click)="rollDice('d12')">d12</button>
+<button (click)="rollDice('d20')">d20</button>
+
+<p><strong>Results</strong></p>
+
+<p>Result: {{simpleResult.result}}</p>
+<p>Dice: {{simpleResult.dice}}</p>
+<p>Partials: {{simpleResult.partials}}</p>
