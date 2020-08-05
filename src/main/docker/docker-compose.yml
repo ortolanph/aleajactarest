@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  heroes-unlimited:
+  alea-jacta-rest:
     container_name: alea-jacta-rest-program
     image: 'aleajactarest:latest'
     ports:

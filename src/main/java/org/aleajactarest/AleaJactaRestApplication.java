@@ -1,14 +1,12 @@
 package org.aleajactarest;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.util.logging.Logger;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 public class AleaJactaRestApplication {
 
     private static final Logger LOGGER = Logger.getLogger(AleaJactaRestApplication.class.getName());

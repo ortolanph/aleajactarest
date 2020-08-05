@@ -8,7 +8,7 @@ plugins {
 	id "com.github.lkishalmi.gatling" version "3.3.4"
 }
 
-group = 'pho.aleajactarest'
+group = 'org.aleajactarest'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -54,24 +54,24 @@ task unpack(type: Copy) {
 }
 
 docker {
-	name "heroesunlimited"
+	name "aleajactarest"
 	tag 'local', '${project.name}:latest'
 	tag 'localVersion', "${project.name}:${version}"
-	buildArgs([DEPENDENCY: "dependency", APPCLASS: 'org.heroesunlimited.HeroesUnlimitedApplication'])
+	buildArgs([DEPENDENCY: "dependency", APPCLASS: 'org.aleajactarest.AleaJactaRestApplication'])
 	dockerfile file("Dockerfile")
 }
 
 dockerCompose {
-	template 'src/main/docker/docker-compose.aleajactarest.yml'
+	template 'src/main/docker/docker-compose.yml'
 	dockerComposeFile "$buildDir/docker/ortolanuniverse/docker-compose.yml"
 	templateTokens([
-			'heroesunlimited.version': "$project.version",
+			'aleajactarest.version': "$project.version",
 	])
 }
 
 dockerRun {
-	name = "heroes-unlimieted-main"
-	image = "heroesunlimited"
+	name = "alea-jacta-rest-main"
+	image = "aleajactarest"
 	ports("8080:8080")
 }
 
