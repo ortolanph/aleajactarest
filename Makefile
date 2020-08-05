@@ -1,15 +1,31 @@
 SPRING_APP_PORT=9090
-APP_FILE=target/aleajactarest.jar
+APP_FILE=AleaJactaRest-0.0.1-SNAPSHOT.jar
 
 .PHONY: clean
 
 clean:
-	@mvn -q clean
+	@./gradlew clean
 
 compile:
-	@mvn clean install
+	@./gradlew clean build
 
-run: compile
-	@[ -f /etc/hosts ] && java -Dserver.port=$(SPRING_APP_PORT) -jar $(APP_FILE) || echo "No good, man, no good!"
+debug-local: compile
+	@java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8787 \
+          -Dserver.port=${SPRING_APP_PORT} \
+          -jar build/libs/${APP_FILE}
 
+start-local: compile
+	@java -Dserver.port=${SPRING_APP_PORT} \
+	     -jar build/libs/${APP_FILE}
 
+start-docker:
+	@./gradlew docker generateDockerCompose dockerComposeUp
+
+all:
+	@./gradlew clean build docker generateDockerCompose dockerComposeUp
+
+stop-docker:
+	@./gradlew dockerComposeDown
+
+gatling:
+	@./gradlew gatlingRun

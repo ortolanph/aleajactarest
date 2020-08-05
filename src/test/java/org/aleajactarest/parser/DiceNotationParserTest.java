@@ -2,16 +2,15 @@ package org.aleajactarest.parser;
 
 import org.aleajactarest.beans.ParsedDice;
 import org.aleajactarest.parser.exceptions.DiceParseException;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
 
 public class DiceNotationParserTest {
 
-    private DiceNotationParser parser;
+/*    private DiceNotationParser parser;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         parser = new DiceNotationParser();
     }
@@ -72,5 +71,5 @@ public class DiceNotationParserTest {
         parsedDice.setModifier(modifier);
 
         return parsedDice;
-    }
+    }*/
 }

@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  heroes-unlimited:
+    container_name: alea-jacta-rest-program
+    image: 'aleajactarest:latest'
+    ports:
+      - '8100:8080'
+    networks:
+      - internal
+  portainer:
+    container_name: portainer
+    image: portainer/portainer:1.23.2
+    restart: always
+    ports:
+      - '8000:8000'
+      - '9000:9000'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    network_mode: "bridge"
+volumes:
+  portainer-data:
+networks:
+  internal:
