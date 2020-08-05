@@ -16,6 +16,6 @@ hs_err_pid*
 ### JetBrains template
 
 # User-specific stuff:
-.idea
+.idea/
 build/
-.gradle
+.gradle/
