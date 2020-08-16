@@ -3,7 +3,7 @@ package org.aleajactarest.operation;
 import java.util.Arrays;
 
 public enum Operation implements OperationStrategy<Integer> {
-    ADDITION("+", (x, y) -> x + y),
+    ADDITION("+", Integer::sum),
     SUBTRACTION("-", (x, y) -> x - y),
     MULTIPLICATION("*", (x, y) -> x * y),
     DIVISION("÷", (x, y) -> x / y);

@@ -2,22 +2,17 @@ package org.aleajactarest.parser;
 
 import org.aleajactarest.beans.ParsedDice;
 import org.aleajactarest.parser.exceptions.DiceParseException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DiceNotationParserTest {
 
-/*    private DiceNotationParser parser;
+    private DiceNotationParser parser = new DiceNotationParser();
 
-    @BeforeEach
-    public void setUp() {
-        parser = new DiceNotationParser();
-    }
-
-    @Test(expected = DiceParseException.class)
-    public void noDiceAtAll() throws Exception {
-        parser.evaluate("roll!");
+    @Test
+    public void noDiceAtAll() {
+        assertThrows(DiceParseException.class, () -> parser.evaluate("roll!"));
     }
 
     @Test
@@ -44,9 +39,10 @@ public class DiceNotationParserTest {
 
         ParsedDice actual = parser.evaluate("d6*10");
 
-
-        assertEquals(expected.getOperator(), actual.getOperator());
-        assertEquals(expected.getModifier(), actual.getModifier());
+        assertAll(
+                () -> assertEquals(expected.getOperator(), actual.getOperator()),
+                () -> assertEquals(expected.getModifier(), actual.getModifier())
+        );
     }
 
     @Test
@@ -55,10 +51,12 @@ public class DiceNotationParserTest {
 
         ParsedDice actual = parser.evaluate("2d6*10");
 
-        assertEquals(expected.getAmount(), actual.getAmount());
-        assertEquals(expected.getDice(), actual.getDice());
-        assertEquals(expected.getOperator(), actual.getOperator());
-        assertEquals(expected.getModifier(), actual.getModifier());
+        assertAll(
+                () -> assertEquals(expected.getAmount(), actual.getAmount()),
+                () -> assertEquals(expected.getDice(), actual.getDice()),
+                () -> assertEquals(expected.getOperator(), actual.getOperator()),
+                () -> assertEquals(expected.getModifier(), actual.getModifier())
+        );
     }
 
 
@@ -71,5 +69,5 @@ public class DiceNotationParserTest {
         parsedDice.setModifier(modifier);
 
         return parsedDice;
-    }*/
+    }
 }

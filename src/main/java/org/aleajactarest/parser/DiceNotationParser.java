@@ -28,7 +28,7 @@ public class DiceNotationParser extends Throwable {
 
             if (containsOperator(elements[1])) {
                 operation = getOperation(elements[1]);
-                modifier = Integer.valueOf(elements[1].substring(elements[1].indexOf(operation) + 1));
+                modifier = Integer.parseInt(elements[1].substring(elements[1].indexOf(operation) + 1));
                 elements[1] = elements[1].substring(0, elements[1].indexOf(operation));
             }
 
@@ -52,20 +52,20 @@ public class DiceNotationParser extends Throwable {
     }
 
     private int getQuantifier(String quantifier) {
-        return !(quantifier == null) ? Integer.valueOf(quantifier) : DEFAULT_AMOUNT;
+        return (quantifier != null) ? Integer.parseInt(quantifier) : DEFAULT_AMOUNT;
     }
 
     private boolean containsOperator(String diceNotation) {
         return OPERATORS
                 .stream()
-                .anyMatch(op -> diceNotation.contains(op));
+                .anyMatch(diceNotation::contains);
 
     }
 
     private String getOperation(String diceNotation) {
         return OPERATORS
                 .stream()
-                .filter(op -> diceNotation.contains(op))
+                .filter(diceNotation::contains)
                 .findFirst()
                 .orElse(DEFAULT_OPERATION);
     }

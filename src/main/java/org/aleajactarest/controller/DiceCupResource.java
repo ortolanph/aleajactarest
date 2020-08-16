@@ -40,12 +40,11 @@ public class DiceCupResource {
 
         LOGGER.info("Will roll: ");
 
-        dices.stream().forEach(dice -> LOGGER.info("\t - {}", dice));
+        dices.forEach(dice -> LOGGER.info("\t - {}", dice));
 
         List<ParsedDice> parsedDices = new ArrayList<>();
-        List<DiceRollResult> results = new ArrayList<>();
 
-        dices.stream().forEach(dice -> {
+        dices.forEach(dice -> {
             try {
                 parsedDices.add(parser.evaluate(dice));
             } catch (DiceParseException e) {
@@ -53,8 +52,8 @@ public class DiceCupResource {
             }
         });
 
-        results.addAll(parsedDices.stream().map(pd -> roll(pd)).collect(Collectors.toList()));
-        int sum = results.stream().mapToInt(t -> t.getResult()).sum();
+        List<DiceRollResult> results = parsedDices.stream().map(this::roll).collect(Collectors.toList());
+        int sum = results.stream().mapToInt(DiceRollResult::getResult).sum();
 
         DiceCupRollResult diceCupRollResult = new DiceCupRollResult();
 

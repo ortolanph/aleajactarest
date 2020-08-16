@@ -30,11 +30,11 @@ public class CustomDiceResource {
             @PathVariable("template") String template,
             @PathVariable("values") String values) {
 
-        LOGGER.info("Rolling a {}, with the following template: ", template);
+        LOGGER.info("Rolling a {}, with the following values: ", template);
 
         List<String> faces = Arrays.asList(values.split(","));
 
-        faces.stream().forEach(d -> LOGGER.info("\t* {}", d));
+        faces.forEach(d -> LOGGER.info("\t* {}", d));
 
         int result = Dice.getDiceBySymbol(template).roll();
 

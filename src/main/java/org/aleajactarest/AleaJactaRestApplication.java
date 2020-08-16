@@ -2,7 +2,6 @@ package org.aleajactarest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 import java.util.logging.Logger;
 
@@ -13,6 +12,6 @@ public class AleaJactaRestApplication {
 
     public static void main(String[] args) {
         LOGGER.fine("ALEA, JACTA, REST! is running!");
-        ApplicationContext ctx = SpringApplication.run(AleaJactaRestApplication.class, args);
+        SpringApplication.run(AleaJactaRestApplication.class, args);
     }
 }
