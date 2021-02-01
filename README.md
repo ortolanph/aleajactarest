@@ -4,9 +4,13 @@
 
 Dice rolling with REST interface.
 
-## Front-end
+## Try
 
-**TBD**
+Download the [Alea Jacta Rest Postman Collection](Alea Jacta Rest Collection.postman_collections.json) file, import it into Postman and give a try.
+
+## Load Tests with Vegeta
+
+To run the load tests locally.
 
 ## Dices
 

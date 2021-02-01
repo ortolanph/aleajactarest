@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "577f1b5d-296d-4742-9363-343f617ddd20",
+		"name": "Alea Jacta Rest Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SIMPLE - d4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/d4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"d4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://aleajactarest.herokuapp.com/api/dices/roll/d4"
+		}
+	]
+}
