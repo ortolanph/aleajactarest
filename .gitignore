@@ -18,3 +18,11 @@ hs_err_pid*
 .idea/
 build/
 .gradle/
+
+# Load test results
+vegeta/local/vegeta
+vegeta/local/results/
+vegeta/local/reports/
+vegeta/remote/vegeta
+vegeta/remote/results/
+vegeta/remote/reports/
