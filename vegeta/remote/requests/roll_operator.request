@@ -1,6 +1,6 @@
-GET http://localhost:8100/api/dices/roll/4/d4/-/4
-GET http://localhost:8100/api/dices/roll/6/d6/+/6
-GET http://localhost:8100/api/dices/roll/8/d8/*/8
-GET http://localhost:8100/api/dices/roll/10/d10/÷/10
-GET http://localhost:8100/api/dices/roll/12/d12/-/12
-GET http://localhost:8100/api/dices/roll/20/d20/+/20
+GET https://aleajactarest.herokuapp.com/api/dices/roll/4/d4/-/4
+GET https://aleajactarest.herokuapp.com/api/dices/roll/6/d6/+/6
+GET https://aleajactarest.herokuapp.com/api/dices/roll/8/d8/*/8
+GET https://aleajactarest.herokuapp.com/api/dices/roll/10/d10/÷/10
+GET https://aleajactarest.herokuapp.com/api/dices/roll/12/d12/-/12
+GET https://aleajactarest.herokuapp.com/api/dices/roll/20/d20/+/20

@@ -28,7 +28,7 @@ function download() {
 
 function wakeUp() {
 	echo "Waking up my application, because Heroku free needs to sleep"
-	curl -i -H https://moviecountdowns-backend.herokuapp.com/api/countdowns/year/2021
+	curl https://aleajactarest.herokuapp.com/api/dices/roll/d4
 	clear
 }
 
