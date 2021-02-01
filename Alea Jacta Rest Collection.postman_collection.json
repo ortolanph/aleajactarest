@@ -23,6 +23,82 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "SIMPLE - d6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/d6",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIMPLE - d8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/d8",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIMPLE - d10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/d10",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"d10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIMPLE - d12",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/d12",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"d12"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -48,7 +124,7 @@
 	"variable": [
 		{
 			"key": "BASE_URL",
-			"value": "https://aleajactarest.herokuapp.com/api/dices/roll/d4"
+			"value": "https://aleajactarest.herokuapp.com/api"
 		}
 	]
 }
