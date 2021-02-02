@@ -1,6 +1,0 @@
-GET https://aleajactarest.herokuapp.com/api/dices/roll/notation/4d4
-GET https://aleajactarest.herokuapp.com/api/dices/roll/notation/6d6
-GET https://aleajactarest.herokuapp.com/api/dices/roll/notation/8d8
-GET https://aleajactarest.herokuapp.com/api/dices/roll/notation/10d10
-GET https://aleajactarest.herokuapp.com/api/dices/roll/notation/12d12
-GET https://aleajactarest.herokuapp.com/api/dices/roll/notation/20d20

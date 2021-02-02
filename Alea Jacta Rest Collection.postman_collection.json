@@ -99,6 +99,612 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "MULTIPLE - 4 d4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/4/d4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"4",
+						"d4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MULTIPLE - 6 d6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/6/d6",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"6",
+						"d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MULTIPLE - 8 d8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/8/d8",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"8",
+						"d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MULTIPLE - 10 d10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/10/d10",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"10",
+						"d10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MULTIPLE - 12 d12",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/12/d12",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"12",
+						"d12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MULTIPLE - 20 d20",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/20/d20",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"20",
+						"d20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPERATOR - 4 d4 - 4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/4/d4/-/4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"4",
+						"d4",
+						"-",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPERATOR - 6 d6 + 6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/6/d6/+/6",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"6",
+						"d6",
+						"+",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPERATOR - 8 d8 * 8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/8/d8/*/8",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"8",
+						"d8",
+						"*",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPERATOR - 10 d10 ÷ 10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/10/d10/÷/10",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"10",
+						"d10",
+						"÷",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPERATOR - 12 d12 - 12",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/12/d12/-/12",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"12",
+						"d12",
+						"-",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPERATOR - 20 d20 + 20",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/20/d20/+/20",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"20",
+						"d20",
+						"+",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NOTATION - 4d4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/notation/4d4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"notation",
+						"4d4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NOTATION - 6d6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/notation/6d6",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"notation",
+						"6d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NOTATION - 8d8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/notation/8d8",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"notation",
+						"8d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NOTATION - 10d10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/notation/10d10",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"notation",
+						"10d10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NOTATION - 12d12",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/notation/12d12",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"notation",
+						"12d12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NOTATION - 20d20",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/roll/notation/20d20",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"roll",
+						"notation",
+						"20d20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUP - 4d4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/cup/4d4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"cup",
+						"4d4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUP - 4d4 + 6d6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/cup/4d4,6d6",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"cup",
+						"4d4,6d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUP - 4d4 + 6d6 + 8d8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/cup/4d4,6d6,8d8",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"cup",
+						"4d4,6d6,8d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUP - 4d4 + 6d6 + 8d8 + 10d10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/cup/4d4,6d6,8d8,10d10",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"cup",
+						"4d4,6d6,8d8,10d10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUP - 4d4 + 6d6 + 8d8 + 10d10 + 12d12",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/cup/4d4,6d6,8d8,10d10,12d12",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"cup",
+						"4d4,6d6,8d8,10d10,12d12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUP - 4d4 + 6d6 + 8d8 + 10d10 + 12d12 + 20d20",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/cup/4d4,6d6,8d8,10d10,12d12,20d20",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"cup",
+						"4d4,6d6,8d8,10d10,12d12,20d20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM - Four Sports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/custom/d4/ARCHERY,ARTISTIC_SWIMMING,ATHLETICS,BADMINTON",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"custom",
+						"d4",
+						"ARCHERY,ARTISTIC_SWIMMING,ATHLETICS,BADMINTON"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM - Six Sports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/custom/d6/BASEBALL,SOFTBALL,BASKETBALL,BASKETBALL_3_X_3,BEACH_VOLLEYBALL,BOXING",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"custom",
+						"d6",
+						"BASEBALL,SOFTBALL,BASKETBALL,BASKETBALL_3_X_3,BEACH_VOLLEYBALL,BOXING"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM - Eight Sports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/custom/d8/BREAKING,CANOE_SLALOM,CANOE_SPRINT,CYCLING_BMX,CYCLING_MOUNTAIN_BIKE,CYCLING_ROAD,CYCLING_TRACK,DIVING",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"custom",
+						"d8",
+						"BREAKING,CANOE_SLALOM,CANOE_SPRINT,CYCLING_BMX,CYCLING_MOUNTAIN_BIKE,CYCLING_ROAD,CYCLING_TRACK,DIVING"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM - Ten Sports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/d10/EQUESTRIAN_DRESSAGE,EQUESTRIAN_EVENTING,EQUESTRIAN_JUMPING,FENCING,FOOTBALL,GOLF,GYMNASTICS_ARTISTICS,GYMNASTICS_RHYTMIC,HANDBALL,HOCKEY,JUDO",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"custom",
+						"d10",
+						"EQUESTRIAN_DRESSAGE,EQUESTRIAN_EVENTING,EQUESTRIAN_JUMPING,FENCING,FOOTBALL,GOLF,GYMNASTICS_ARTISTICS,GYMNASTICS_RHYTMIC,HANDBALL,HOCKEY,JUDO"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM - Twelve Sports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/custom/d12/KARATE,MARATHON_SWIMMING,MODERN_PENTATHLON,ROWING,RUGBY,SAILING,SHOOTING,SKATEBOARDING,SPORT_CLIMBING,SURFING,SWIMMING,TABLE_TENNIS",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"custom",
+						"d12",
+						"KARATE,MARATHON_SWIMMING,MODERN_PENTATHLON,ROWING,RUGBY,SAILING,SHOOTING,SKATEBOARDING,SPORT_CLIMBING,SURFING,SWIMMING,TABLE_TENNIS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM - Twenty Sports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/dices/custom/d20/TAEKWONDO,TENNIS,TRAMPOLINE,TRIATHLON,VOLLEYBALL,WATER_POLO,WEIGHTLIFTING,WRESTLING_FREESTYLE,WRESTLING_GRECO_ROMAN,ALPINE_SKIING,BIATHLON,BOBSLEIGH,CROSS_COUNTRY_SKIING,CURLING,FIGURE_SKATING,FREESTYLE_SKIING,ICE_HOCKEY,LUGE,SKELETON,SNOWBOARD",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"dices",
+						"custom",
+						"d20",
+						"TAEKWONDO,TENNIS,TRAMPOLINE,TRIATHLON,VOLLEYBALL,WATER_POLO,WEIGHTLIFTING,WRESTLING_FREESTYLE,WRESTLING_GRECO_ROMAN,ALPINE_SKIING,BIATHLON,BOBSLEIGH,CROSS_COUNTRY_SKIING,CURLING,FIGURE_SKATING,FREESTYLE_SKIING,ICE_HOCKEY,LUGE,SKELETON,SNOWBOARD"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

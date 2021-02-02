@@ -1,6 +1,0 @@
-GET https://aleajactarest.herokuapp.com/api/dices/roll/d4
-GET https://aleajactarest.herokuapp.com/api/dices/roll/d6
-GET https://aleajactarest.herokuapp.com/api/dices/roll/d8
-GET https://aleajactarest.herokuapp.com/api/dices/roll/d10
-GET https://aleajactarest.herokuapp.com/api/dices/roll/d12
-GET https://aleajactarest.herokuapp.com/api/dices/roll/d20

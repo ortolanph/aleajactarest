@@ -10,7 +10,19 @@ Download the [Alea Jacta Rest Postman Collection](Alea Jacta Rest Collection.pos
 
 ## Load Tests with Vegeta
 
-To run the load tests locally.
+Firsty build the project with the following command:
+
+```shell
+./gradlew clean build docker generateDockerCompose dockerComposeUp
+```
+
+After building, go to the `vegeta/local` directory and run:
+
+```shell
+./vegeta.sh
+```
+
+And watch things working.
 
 ## Dices
 
