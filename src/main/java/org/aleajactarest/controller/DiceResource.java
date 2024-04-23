@@ -22,7 +22,7 @@ import java.util.Arrays;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/dices/roll")
-public class DiceResource {
+public class DiceResource implements RollResources{
 
     final DiceRollResultAssembly assembly;
 
@@ -32,7 +32,7 @@ public class DiceResource {
     public DiceRollResult roll(
         @PathVariable("dice") String dice) {
 
-        log.info("Rolling a {}, shaking hand...", dice);
+        log.info("roll: dice {}", dice);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
@@ -44,10 +44,7 @@ public class DiceResource {
         @PathVariable("times") int times,
         @PathVariable("dice") String dice) {
 
-        log.info(
-            "Rolling {} {}s! There's a lot of shakes that I have to do.",
-            times,
-            dice);
+        log.info("rollMultiple: times {} dice {}", times, dice);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
@@ -59,18 +56,13 @@ public class DiceResource {
     }
 
     @GetMapping("/{times}/{dice}/{operator}/{modifier}")
-    public DiceRollResult rollMultiple(
+    public DiceRollResult rollMultipleWithOperation(
         @PathVariable("times") int times,
         @PathVariable("dice") String dice,
         @PathVariable("operator") String operator,
         @PathVariable("modifier") int modifier) {
 
-        log.info(
-            "Rolling {} {}s and modified by {}{}! There's a lot of shakes that I have to do.",
-            times,
-            dice,
-            operator,
-            modifier);
+        log.info("rollMultipleWithOperation: times {} dice {} operator {} modifier {}", times, dice, operator, modifier);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
@@ -85,19 +77,11 @@ public class DiceResource {
     public DiceRollResult rollWithNotation(
         @PathVariable("diceNotation") String diceNotation) throws DiceParseException {
 
-        log.info(
-            "Interpreting {} and rolling.",
-            diceNotation);
+        log.info("rollWithNotation: diceNotation {}", diceNotation);
 
         ParsedDice parsedDice = parser.evaluate(diceNotation);
 
-        Dice myDice = Dice.getDiceBySymbol(parsedDice.getDice());
-
-        int[] partials = myDice.multipleRoll(parsedDice.getAmount());
-
-        int result = Operation.getOperationBySymbol(parsedDice.getOperator()).compute(Arrays.stream(partials).parallel().sum(), parsedDice.getModifier());
-
-        return assembly.modifierResult(myDice, result, parsedDice.getOperator(), parsedDice.getModifier(), partials);
+        return getDiceRollResult(parsedDice, assembly);
     }
 
 }

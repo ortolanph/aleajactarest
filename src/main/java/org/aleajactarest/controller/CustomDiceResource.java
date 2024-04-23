@@ -19,20 +19,18 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/dices/custom")
-public class CustomDiceResource {
+public class CustomDiceResource implements RollResources {
 
     final CustomDiceRollResultAssembly customAssembly;
 
     @GetMapping("/{template}/{values}")
-    public CustomDiceRollResult roll(
+    public CustomDiceRollResult templateRoll(
         @PathVariable("template") String template,
         @PathVariable("values") String values) {
 
-        log.info("Rolling a {}, with the following values: ", template);
+        log.info("templateRoll: template {} values {}", template, values);
 
         List<String> faces = Arrays.asList(values.split(","));
-
-        faces.forEach(d -> log.info("\t* {}", d));
 
         int result = Dice.getDiceBySymbol(template).roll();
 
