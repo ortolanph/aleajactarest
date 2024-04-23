@@ -1,6 +1,7 @@
 package org.aleajactarest.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.aleajactarest.assembly.DiceRollResultAssembly;
 import org.aleajactarest.beans.DiceCupRollResult;
 import org.aleajactarest.beans.DiceRollResult;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Slf4j
+@Slf4j
 @RequiredArgsConstructor
 @CrossOrigin
 @RestController
@@ -35,9 +36,9 @@ public class DiceCupResource {
     public DiceCupRollResult roll(@PathVariable("dicelist") String dicelist) {
         List<String> dices = Arrays.asList(dicelist.split(","));
 
-        //log.info("Will roll: ");
+        log.info("Will roll: ");
 
-        //dices.forEach(dice -> log.info("\t - {}", dice));
+        dices.forEach(dice -> log.info("\t - {}", dice));
 
         List<ParsedDice> parsedDices = new ArrayList<>();
 

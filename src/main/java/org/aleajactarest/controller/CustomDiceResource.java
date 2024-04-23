@@ -1,6 +1,7 @@
 package org.aleajactarest.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.aleajactarest.assembly.CustomDiceRollResultAssembly;
 import org.aleajactarest.beans.CustomDiceRollResult;
 import org.aleajactarest.engine.Dice;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
-//@Slf4j
+@Slf4j
 @RequiredArgsConstructor
 @CrossOrigin
 @RestController
@@ -27,11 +28,11 @@ public class CustomDiceResource {
         @PathVariable("template") String template,
         @PathVariable("values") String values) {
 
-        //log.info("Rolling a {}, with the following values: ", template);
+        log.info("Rolling a {}, with the following values: ", template);
 
         List<String> faces = Arrays.asList(values.split(","));
 
-        //faces.forEach(d -> log.info("\t* {}", d));
+        faces.forEach(d -> log.info("\t* {}", d));
 
         int result = Dice.getDiceBySymbol(template).roll();
 

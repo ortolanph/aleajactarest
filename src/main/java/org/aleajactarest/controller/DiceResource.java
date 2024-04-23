@@ -1,6 +1,7 @@
 package org.aleajactarest.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.aleajactarest.assembly.DiceRollResultAssembly;
 import org.aleajactarest.beans.DiceRollResult;
 import org.aleajactarest.beans.ParsedDice;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 
-//@Slf4j
+@Slf4j
 @RequiredArgsConstructor
 @CrossOrigin
 @RestController
@@ -31,8 +32,7 @@ public class DiceResource {
     public DiceRollResult roll(
         @PathVariable("dice") String dice) {
 
-//        log.info("Rolling a {}, shaking hand...",
-//            dice);
+        log.info("Rolling a {}, shaking hand...", dice);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
@@ -44,10 +44,10 @@ public class DiceResource {
         @PathVariable("times") int times,
         @PathVariable("dice") String dice) {
 
-//        log.info(
-//            "Rolling {} {}s! There's a lot of shakes that I have to do.",
-//            times,
-//            dice);
+        log.info(
+            "Rolling {} {}s! There's a lot of shakes that I have to do.",
+            times,
+            dice);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
@@ -65,12 +65,12 @@ public class DiceResource {
         @PathVariable("operator") String operator,
         @PathVariable("modifier") int modifier) {
 
-//        log.info(
-//            "Rolling {} {}s and modified by {}{}! There's a lot of shakes that I have to do.",
-//            times,
-//            dice,
-//            operator,
-//            modifier);
+        log.info(
+            "Rolling {} {}s and modified by {}{}! There's a lot of shakes that I have to do.",
+            times,
+            dice,
+            operator,
+            modifier);
 
         Dice myDice = Dice.getDiceBySymbol(dice);
 
@@ -85,9 +85,9 @@ public class DiceResource {
     public DiceRollResult rollWithNotation(
         @PathVariable("diceNotation") String diceNotation) throws DiceParseException {
 
-//        log.info(
-//            "Interpreting {} and rolling.",
-//            diceNotation);
+        log.info(
+            "Interpreting {} and rolling.",
+            diceNotation);
 
         ParsedDice parsedDice = parser.evaluate(diceNotation);
 
