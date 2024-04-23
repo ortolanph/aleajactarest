@@ -1,6 +1,6 @@
-GET http://localhost:8100/api/dices/cup/4d4
-GET http://localhost:8100/api/dices/cup/4d4,6d6
-GET http://localhost:8100/api/dices/cup/4d4,6d6,8d8
-GET http://localhost:8100/api/dices/cup/4d4,6d6,8d8,10d10
-GET http://localhost:8100/api/dices/cup/4d4,6d6,8d8,10d10,12d12
-GET http://localhost:8100/api/dices/cup/4d4,6d6,8d8,10d10,12d12,20d20
+GET http://localhost:9100/api/dices/cup/4d4
+GET http://localhost:9100/api/dices/cup/4d4,6d6
+GET http://localhost:9100/api/dices/cup/4d4,6d6,8d8
+GET http://localhost:9100/api/dices/cup/4d4,6d6,8d8,10d10
+GET http://localhost:9100/api/dices/cup/4d4,6d6,8d8,10d10,12d12
+GET http://localhost:9100/api/dices/cup/4d4,6d6,8d8,10d10,12d12,20d20

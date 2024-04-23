@@ -1,5 +1,7 @@
 package org.aleajactarest.operation;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 
 public enum Operation implements OperationStrategy<Integer> {
@@ -8,8 +10,9 @@ public enum Operation implements OperationStrategy<Integer> {
     MULTIPLICATION("*", (x, y) -> x * y),
     DIVISION("÷", (x, y) -> x / y);
 
-    private OperationStrategy<Integer> operationStrategy;
-    private String symbol;
+    private final OperationStrategy<Integer> operationStrategy;
+    @Getter
+    private final String symbol;
 
     Operation(String symbol, OperationStrategy<Integer> operationStrategy) {
         this.symbol = symbol;
@@ -18,16 +21,12 @@ public enum Operation implements OperationStrategy<Integer> {
 
     public static Operation getOperationBySymbol(String symbol) {
         return Arrays
-                .stream(values())
-                .filter(op -> op.getSymbol().equals(symbol))
-                .findFirst()
-                .orElseThrow(
-                        () -> new IllegalArgumentException(symbol)
-                );
-    }
-
-    public String getSymbol() {
-        return symbol;
+            .stream(values())
+            .filter(op -> op.getSymbol().equals(symbol))
+            .findFirst()
+            .orElseThrow(
+                () -> new IllegalArgumentException(symbol)
+            );
     }
 
     @Override

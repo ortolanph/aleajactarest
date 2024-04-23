@@ -13,13 +13,13 @@ public class DiceNotationParser extends Throwable {
     private static final String DICE_SYMBOL = "d";
     private static final List<String> OPERATORS = Arrays.asList("+", "-", "*", "÷");
     private static final int DEFAULT_AMOUNT = 1;
-    private static final String DEFAULT_OPERATION = "+";
+    private static final String DEFAULT_OPERATOR = "+";
     private static final int DEFAULT_MODIFIER = 0;
 
     public ParsedDice evaluate(String diceNotation) throws DiceParseException {
-        int amount = 1;
-        String dice = "";
-        String operation = DEFAULT_OPERATION;
+        int amount;
+        String dice;
+        String operator = DEFAULT_OPERATOR;
         int modifier = DEFAULT_MODIFIER;
 
         if (containsADice(diceNotation)) {
@@ -27,9 +27,9 @@ public class DiceNotationParser extends Throwable {
             amount = getQuantifier(elements[0]);
 
             if (containsOperator(elements[1])) {
-                operation = getOperation(elements[1]);
-                modifier = Integer.parseInt(elements[1].substring(elements[1].indexOf(operation) + 1));
-                elements[1] = elements[1].substring(0, elements[1].indexOf(operation));
+                operator = getOperation(elements[1]);
+                modifier = Integer.parseInt(elements[1].substring(elements[1].indexOf(operator) + 1));
+                elements[1] = elements[1].substring(0, elements[1].indexOf(operator));
             }
 
             dice = DICE_SYMBOL + elements[1];
@@ -41,7 +41,7 @@ public class DiceNotationParser extends Throwable {
 
         parsedDice.setAmount(amount);
         parsedDice.setDice(dice);
-        parsedDice.setOperator(operation);
+        parsedDice.setOperator(operator);
         parsedDice.setModifier(modifier);
 
         return parsedDice;
@@ -52,21 +52,21 @@ public class DiceNotationParser extends Throwable {
     }
 
     private int getQuantifier(String quantifier) {
-        return (quantifier != null) ? Integer.parseInt(quantifier) : DEFAULT_AMOUNT;
+        return (quantifier.isBlank()) ? DEFAULT_AMOUNT : Integer.parseInt(quantifier);
     }
 
     private boolean containsOperator(String diceNotation) {
         return OPERATORS
-                .stream()
-                .anyMatch(diceNotation::contains);
+            .stream()
+            .anyMatch(diceNotation::contains);
 
     }
 
     private String getOperation(String diceNotation) {
         return OPERATORS
-                .stream()
-                .filter(diceNotation::contains)
-                .findFirst()
-                .orElse(DEFAULT_OPERATION);
+            .stream()
+            .filter(diceNotation::contains)
+            .findFirst()
+            .orElse(DEFAULT_OPERATOR);
     }
 }

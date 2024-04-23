@@ -1,31 +1,21 @@
-SPRING_APP_PORT=9090
-APP_FILE=AleaJactaRest-0.0.1-SNAPSHOT.jar
+VERSION="0.0.1"
 
-.PHONY: clean
+CONTAINER_PORT="8080"
+HOST_PORT="9100"
 
-clean:
-	@./gradlew clean
+APP_FILE="AleaJactaREST-0.0.1-SNAPSHOT.jar"
+
+DOCKER_IMAGE_NAME="alea-jacta-rest"
+DOCKER_CONTAINER_NAME="alea-jacta-rest-run"
+
+.PHONY: compile
 
 compile:
 	@./gradlew clean build
+	@./gradlew unpack
 
-debug-local: compile
-	@java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8787 \
-          -Dserver.port=${SPRING_APP_PORT} \
-          -jar build/libs/${APP_FILE}
+docker-build: compile
+	@docker build -t ${DOCKER_IMAGE_NAME}:${VERSION} .
 
-start-local: compile
-	@java -Dserver.port=${SPRING_APP_PORT} \
-	     -jar build/libs/${APP_FILE}
-
-start-docker:
-	@./gradlew docker generateDockerCompose dockerComposeUp
-
-all:
-	@./gradlew clean build docker generateDockerCompose dockerComposeUp
-
-stop-docker:
-	@./gradlew dockerComposeDown
-
-gatling:
-	@./gradlew gatlingRun
+docker-run: docker-build
+	@docker run --name ${DOCKER_CONTAINER_NAME} -d -p ${HOST_PORT}:${CONTAINER_PORT} ${DOCKER_IMAGE_NAME}:${VERSION}

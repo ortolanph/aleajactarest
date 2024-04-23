@@ -1,22 +1,20 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.6.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
-	id 'com.palantir.docker' version '0.25.0'
-	id "com.palantir.docker-run" version "0.25.0"
-	id "com.palantir.docker-compose" version "0.25.0"
-	id "com.github.lkishalmi.gatling" version "3.3.4"
+	id 'org.springframework.boot' version '3.2.4'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'io.freefair.lombok' version '8.6'
 }
 
 group = 'org.aleajactarest'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_19
+}
 
 configurations {
-	developmentOnly
-	runtimeClasspath {
-		extendsFrom developmentOnly
-	}
+	implementation.exclude module: "spring-boot-starter-logging"
+
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -24,6 +22,10 @@ configurations {
 
 repositories {
 	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2023.0.1")
 }
 
 dependencies {
@@ -38,58 +40,42 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
-	gatling 'com.google.code.gson:gson:2.8.0'
-	gatlingImplementation 'org.apache.commons:commons-lang3:3.4'
-	gatlingRuntimeOnly 'cglib:cglib-nodep:3.2.0'
+}
+
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 test {
 	useJUnitPlatform()
 }
 
-task unpack(type: Copy) {
-	dependsOn bootJar
-	from(zipTree(tasks.bootJar.outputs.files.singleFile))
-	into("build/docker/dependency")
+springBoot {
+	buildInfo()
 }
 
-docker {
-	name "aleajactarest"
-	tag 'local', '${project.name}:latest'
-	tag 'localVersion', "${project.name}:${version}"
-	buildArgs([DEPENDENCY: "dependency", APPCLASS: 'org.aleajactarest.AleaJactaRestApplication'])
-	dockerfile file("Dockerfile")
-}
-
-dockerCompose {
-	template 'src/main/docker/docker-compose.yml'
-	dockerComposeFile "$buildDir/docker/ortolanuniverse/docker-compose.yml"
-	templateTokens([
-			'aleajactarest.version': "$project.version",
-	])
-}
-
-dockerRun {
-	name = "alea-jacta-rest-main"
-	image = "aleajactarest"
-	ports("8080:8080")
-}
-
-dockerPrepare.dependsOn unpack
-
-configure(unpack) {
-	group = 'docker'
-	description = 'Unpacks the boot jar so we can build multi-layer images'
-}
-
-sourceSets {
-	gatling {
-		scala.srcDir "src/gatling/simulations"
-		resources.srcDir "src/gatling/resources"
+tasks.register('printVersion') {
+	doLast {
+		println project.version
 	}
 }
 
-gatling {
-	toolVersion = '3.3.1'
-	systemProperties = ['file.encoding': 'UTF-8']
+tasks.named("bootBuildImage") {
+	imageName = "${project.name}:latest"
+	createdDate = "now"
+	environment["BP_JVM_VERSION"] = "20"
+}
+
+task unpack(type: Copy) {
+	dependsOn bootJar
+	from(zipTree(tasks.bootJar.outputs.files.singleFile))
+	into("build/dependency")
+}
+
+configure(unpack) {
+	group = 'release'
+	description = 'Unpacks the boot jar so we can build multi-layer images'
 }

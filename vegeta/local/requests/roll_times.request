@@ -1,6 +1,6 @@
-GET http://localhost:8100/api/dices/roll/4/d4
-GET http://localhost:8100/api/dices/roll/6/d6
-GET http://localhost:8100/api/dices/roll/8/d8
-GET http://localhost:8100/api/dices/roll/10/d10
-GET http://localhost:8100/api/dices/roll/12/d12
-GET http://localhost:8100/api/dices/roll/20/d20
+GET http://localhost:9100/api/dices/roll/4/d4
+GET http://localhost:9100/api/dices/roll/6/d6
+GET http://localhost:9100/api/dices/roll/8/d8
+GET http://localhost:9100/api/dices/roll/10/d10
+GET http://localhost:9100/api/dices/roll/12/d12
+GET http://localhost:9100/api/dices/roll/20/d20

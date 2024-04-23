@@ -1,5 +1,6 @@
 package org.aleajactarest.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.aleajactarest.assembly.DiceRollResultAssembly;
 import org.aleajactarest.beans.DiceCupRollResult;
 import org.aleajactarest.beans.DiceRollResult;
@@ -8,9 +9,6 @@ import org.aleajactarest.engine.Dice;
 import org.aleajactarest.operation.Operation;
 import org.aleajactarest.parser.DiceNotationParser;
 import org.aleajactarest.parser.exceptions.DiceParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,25 +20,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//@Slf4j
+@RequiredArgsConstructor
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/dices/cup")
 public class DiceCupResource {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DiceCupResource.class);
 
-    @Autowired
-    private DiceNotationParser parser;
+    final DiceNotationParser parser;
 
-    @Autowired
-    private DiceRollResultAssembly assembly;
+    final DiceRollResultAssembly assembly;
 
     @GetMapping("/{dicelist}")
     public DiceCupRollResult roll(@PathVariable("dicelist") String dicelist) {
         List<String> dices = Arrays.asList(dicelist.split(","));
 
-        LOGGER.info("Will roll: ");
+        //log.info("Will roll: ");
 
-        dices.forEach(dice -> LOGGER.info("\t - {}", dice));
+        //dices.forEach(dice -> log.info("\t - {}", dice));
 
         List<ParsedDice> parsedDices = new ArrayList<>();
 

@@ -16,15 +16,15 @@ createFolders() {
 	mkdir reports
 }
 
-function download() {
-	echo "Download Vegeta"
-	wget -q https://github.com/tsenart/vegeta/releases/download/v12.8.4/vegeta_12.8.4_linux_amd64.tar.gz
-	tar -xf vegeta_12.8.4_linux_amd64.tar.gz
-	rm vegeta_12.8.4_linux_amd64.tar.gz
-	rm README.md
-	rm CHANGELOG
-	rm LICENSE
-}
+#function download() {
+#	echo "Download Vegeta"
+#	wget -q https://github.com/tsenart/vegeta/releases/download/v12.8.4/vegeta_12.8.4_linux_amd64.tar.gz
+#	tar -xf vegeta_12.8.4_linux_amd64.tar.gz
+#	rm vegeta_12.8.4_linux_amd64.tar.gz
+#	rm README.md
+#	rm CHANGELOG
+#	rm LICENSE
+#}
 
 function attack() {
 	echo "Create requests for Dice Rolls $1"
@@ -68,7 +68,7 @@ echo "Dragon Ball Z Based Performance tests!"
 echo
 
 createFolders
-download
+# download
 
 clear
 echo "Attacking"

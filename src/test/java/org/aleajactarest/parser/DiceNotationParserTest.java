@@ -4,20 +4,22 @@ import org.aleajactarest.beans.ParsedDice;
 import org.aleajactarest.parser.exceptions.DiceParseException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DiceNotationParserTest {
+class DiceNotationParserTest {
 
-    private DiceNotationParser parser = new DiceNotationParser();
+    DiceNotationParser parser = new DiceNotationParser();
 
     @Test
-    public void noDiceAtAll() {
+    void noDiceAtAll() {
         assertThrows(DiceParseException.class, () -> parser.evaluate("roll!"));
     }
 
     @Test
-    public void parseDiceOnly() throws Exception {
-        ParsedDice expected = createParsedDice(0, "d6", "", 0);
+    void parseDiceOnly() throws Exception {
+        ParsedDice expected = createParsedDice(0, "", 0);
 
         ParsedDice actual = parser.evaluate("d6");
 
@@ -25,8 +27,8 @@ public class DiceNotationParserTest {
     }
 
     @Test
-    public void parseDiceWithAmout() throws Exception {
-        ParsedDice expected = createParsedDice(2, "d6", "", 0);
+    void parseDiceWithAmout() throws Exception {
+        ParsedDice expected = createParsedDice(2, "", 0);
 
         ParsedDice actual = parser.evaluate("2d6");
 
@@ -34,37 +36,37 @@ public class DiceNotationParserTest {
     }
 
     @Test
-    public void parseDiceWithModifier() throws Exception {
-        ParsedDice expected = createParsedDice(0, "d6", "*", 10);
+    void parseDiceWithModifier() throws Exception {
+        ParsedDice expected = createParsedDice(0, "*", 10);
 
         ParsedDice actual = parser.evaluate("d6*10");
 
         assertAll(
-                () -> assertEquals(expected.getOperator(), actual.getOperator()),
-                () -> assertEquals(expected.getModifier(), actual.getModifier())
+            () -> assertEquals(expected.getOperator(), actual.getOperator()),
+            () -> assertEquals(expected.getModifier(), actual.getModifier())
         );
     }
 
     @Test
-    public void parseWithEverything() throws Exception {
-        ParsedDice expected = createParsedDice(2, "d6", "*", 10);
+    void parseWithEverything() throws Exception {
+        ParsedDice expected = createParsedDice(2, "*", 10);
 
         ParsedDice actual = parser.evaluate("2d6*10");
 
         assertAll(
-                () -> assertEquals(expected.getAmount(), actual.getAmount()),
-                () -> assertEquals(expected.getDice(), actual.getDice()),
-                () -> assertEquals(expected.getOperator(), actual.getOperator()),
-                () -> assertEquals(expected.getModifier(), actual.getModifier())
+            () -> assertEquals(expected.getAmount(), actual.getAmount()),
+            () -> assertEquals(expected.getDice(), actual.getDice()),
+            () -> assertEquals(expected.getOperator(), actual.getOperator()),
+            () -> assertEquals(expected.getModifier(), actual.getModifier())
         );
     }
 
 
-    private ParsedDice createParsedDice(int quantifier, String dice, String operation, int modifier) {
+    ParsedDice createParsedDice(int quantifier, String operation, int modifier) {
         ParsedDice parsedDice = new ParsedDice();
 
         parsedDice.setAmount(quantifier);
-        parsedDice.setDice(dice);
+        parsedDice.setDice("d6");
         parsedDice.setOperator(operation);
         parsedDice.setModifier(modifier);
 

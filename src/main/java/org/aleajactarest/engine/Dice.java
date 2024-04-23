@@ -19,12 +19,12 @@ public enum Dice implements DiceRoller {
 
     public static Dice getDiceBySymbol(String symbol) {
         return Arrays
-                .stream(values())
-                .filter(d -> symbol.equalsIgnoreCase(d.name()))
-                .findFirst()
-                .orElseThrow(
-                        () -> new IllegalArgumentException(String.format("No dice with symbol [%s]. Can't roll!", symbol))
-                );
+            .stream(values())
+            .filter(d -> symbol.equalsIgnoreCase(d.name()))
+            .findFirst()
+            .orElseThrow(
+                () -> new IllegalArgumentException(String.format("No dice with symbol [%s]. Can't roll!", symbol))
+            );
     }
 
     public int roll() {
