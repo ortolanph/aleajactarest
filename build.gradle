@@ -1,8 +1,10 @@
 plugins {
 	id 'java'
+	id 'scala'
 	id 'org.springframework.boot' version '3.2.4'
 	id 'io.spring.dependency-management' version '1.1.4'
 	id 'io.freefair.lombok' version '8.6'
+	id 'io.gatling.gradle' version '3.10.5'
 }
 
 group = 'org.aleajactarest'
@@ -41,8 +43,14 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
+	gatling 'io.gatling:gatling-core:3.10.5'
+	gatlingImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.10.5'
+	implementation 'org.scala-lang:scala-library:2.13.13'
 }
 
+gatling {
+	logLevel = 'DEBUG'
+}
 
 dependencyManagement {
 	imports {
