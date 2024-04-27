@@ -10,8 +10,6 @@ import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 
 class MultipleMultipleDiceRollSimulation extends Simulation {
-  var dices:  Array[String] = Array("d6", "d8", "d10", "d12", "d20")
-
   val baseUrl: String = "http://localhost:9100/api"
   val httpProtocol: HttpProtocolBuilder = http.baseUrl(baseUrl)
 
